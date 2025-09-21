@@ -22,7 +22,7 @@ namespace VolumeChanger
                     return;
                 }
 
-                string exePath = Assembly.GetExecutingAssembly().Location;
+                string exePath = Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "exe");
                 // For .NET Core/5+ single-file published apps, Location might point to a temp directory.
                 // If using single-file deployment, consider Environment.ProcessPath or other means to get the persistent path.
                 // For standard deployments, Assembly.GetExecutingAssembly().Location is usually correct.

@@ -24,6 +24,7 @@ namespace VolumeChanger
                 EnumerateInputDevices();
                 UpdateWantedVolumeFromNud();
                 SetVolumeAdjustmentActive(false);
+                SwitchUpdate_Click(sender, e); // Start changing volume immediately
             }
             catch (Exception ex)
             {
@@ -159,7 +160,7 @@ namespace VolumeChanger
 
         private void EnumerateInputDevices()
         {
-            MMDevice previouslySelectedDevice = DevicesComboBox.SelectedItem as MMDevice;
+            using MMDevice previouslySelectedDevice = DevicesComboBox.SelectedItem as MMDevice;
             string previouslySelectedDeviceId = previouslySelectedDevice?.ID;
 
             DevicesComboBox.Items.Clear();
